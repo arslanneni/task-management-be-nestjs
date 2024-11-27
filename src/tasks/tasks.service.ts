@@ -13,7 +13,11 @@ export class TasksService {
   ) {}
 
   async getAllTasks() {
-    const getAllTasks = await this.taskRepo.find({});
+    const getAllTasks = await this.taskRepo.find({
+      where: {
+        status: 'Pending',
+      } as unknown,
+    });
     if (getAllTasks.length > 0) {
       return {
         status: 'SUCCESS',
@@ -85,42 +89,46 @@ export class TasksService {
     }
   }
   async updateTask(id: number, updateTaskDto: UpdateTaskDto) {
-    const modifiedDateTime = new Date();
-    const getTaskByID = await this.taskRepo.find({
-      where: {
-        id: id,
-      },
-    });
-
-    if (getTaskByID.length > 0) {
-      const updatedTask = await this.taskRepo.update(id, {
-        ...updateTaskDto,
-        modified_date_time: modifiedDateTime,
-        status: status,
+    try {
+      const modifiedDateTime = new Date();
+      const getTaskByID = await this.taskRepo.find({
+        where: {
+          id: id,
+        },
       });
 
-      if (updatedTask.affected === 1) {
-        return {
-          status: 'SUCCESS',
-          httpcode: HttpStatus.OK,
-          message: 'Task Updated Successfully',
-          data: updatedTask,
-        };
+      if (getTaskByID.length > 0) {
+        const updatedTask = await this.taskRepo.update(id, {
+          ...updateTaskDto,
+          modified_date_time: modifiedDateTime,
+          status: 'Pending',
+        });
+
+        if (updatedTask.affected === 1) {
+          return {
+            status: 'SUCCESS',
+            httpcode: HttpStatus.OK,
+            message: 'Task Updated Successfully',
+            data: updatedTask,
+          };
+        } else {
+          return {
+            status: 'FAILURE',
+            httpcode: HttpStatus.CONFLICT,
+            message: 'Task Update Failed',
+            data: [],
+          };
+        }
       } else {
         return {
           status: 'FAILURE',
-          httpcode: HttpStatus.CONFLICT,
-          message: 'Task Update Failed',
+          httpcode: HttpStatus.NOT_FOUND,
+          message: 'Task Not Found',
           data: [],
         };
       }
-    } else {
-      return {
-        status: 'FAILURE',
-        httpcode: HttpStatus.NOT_FOUND,
-        message: 'Task Not Found',
-        data: [],
-      };
+    } catch (err) {
+      console.log(err);
     }
   }
   async deleteTask(id: number) {
